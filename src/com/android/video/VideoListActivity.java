@@ -24,7 +24,8 @@ import com.android.video.widget.VideoSuperPlayer;
 import com.android.video.widget.VideoSuperPlayer.VideoPlayCallbackImpl;
 
 public class VideoListActivity extends Activity {
-	private String url = "http://7xkbzx.com1.z0.glb.clouddn.com/SampleVideo_720x480_10mb.mp4";
+	private String url = "http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4";
+	private String url2 = "http://218.200.69.66:8302/upload/Media/20150327/43bfda1b-7280-469c-a83b-82fa311c79d7.m4v";
 	private List<VideoBean> mList;
 	private ListView mListView;
 	private boolean isPlaying;
@@ -62,7 +63,11 @@ public class VideoListActivity extends Activity {
 		mListView = (ListView) findViewById(R.id.list);
 		mList = new ArrayList<VideoBean>();
 		for (int i = 0; i < 10; i++) {
-			mList.add(new VideoBean(url));
+			if(i%2==0){
+				mList.add(new VideoBean(url));
+			}else{
+				mList.add(new VideoBean(url2));
+			}
 		}
 		mAdapter = new MAdapter(this);
 		mListView.setAdapter(mAdapter);
